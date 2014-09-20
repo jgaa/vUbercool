@@ -1,0 +1,41 @@
+
+BUGS:
+ - weighttp does not resolve trough our embedded dns
+ - We have a performance loss recently - probablly due to L3 cache misses.
+
+
+Pri 1:
+ - Implement static pages
+ - Implement mixed pages (static pages with macros)
+ - Decode encoded URI's (RFC 2616 3.2.1)
+ - Optimize content-manager creation (VhostManager.cpp) / eliminate memory allocation
+ - Optimized away as many memory allocations as possible (they are slowing us down significantly)
+ - Fix any FIXME's
+ - Go over all TODO's and implement, dismiss or put on todo.
+ - Add timeout for connections (Implement correctly)
+ - Catch and deal with VhostManager::ExceptionRedirect / HTTP redirect
+ - Stats to stats-page (separate content handler?)
+ - Unit-tests for http requests
+    - Normal requests
+    - Invalid requests
+    - Interleaved request
+    - Interleaved requests with random packet borderies
+    - Incomplete requests
+ - Add secondary data-storage for hosts (id / data) - also in memory
+ - Functional tests for DNS and HTTP
+
+Pri 2:
+ - Recycle Host implementation buffers to avoid malloc
+ - Add configuration-utility
+ - Use pre-allocated buffers for the ostreams in CurrentReply
+ - Optimize the mallocs in DNS by using re-usable data request object (in stead of many stack variables)
+ - Performance testing
+ - Optimize for speed (consider flex/bison http request parser)
+ - Reconfig (HUP)
+ - Refactor DNS Message.h into header and cpp file
+ - Make initd script with "setcap 'cap_net_bind_service=+ep' /path/to/program" to allow binding to low ports
+
+Ideas (maybe some day)
+ - Port to Windows
+ - Implement tiny CMS with comments
+ - Add classes to make Angular.js work smoothly with vUbercoool sites
