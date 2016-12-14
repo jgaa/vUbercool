@@ -124,12 +124,15 @@ void ParseHttpConfig(const string& path, HttpConfig& conf,
 
    CopyToMap<HttpConfig::site_id_t>(http.get_child("aliases"),
                                           conf.site_aliases);
-
    CopyToMap<string>(http.get_child("redirects"), conf.http_redirects);
 
    if (auto compression = http.get_child_optional("compression")) {
-        conf.allow_deflate = compression->get_child_optional("deflate");
-        conf.allow_gzip = compression->get_child_optional("gzip");
+       if (auto deflate = compression->get_optional<bool>("deflate")) {
+           conf.allow_deflate = *deflate;
+       }
+       if (auto gzip = compression->get_optional<bool>("gzip")) {
+           conf.allow_gzip = *gzip;
+       }
    }
 }
 
