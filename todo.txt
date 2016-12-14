@@ -1,4 +1,15 @@
 
+Pri 1:
+ - Refactor to use wfde for HTTP engine
+ - Use per-request memory pool allocator
+ - Use reader-chain like restc_cpp to facilitate decompression, chunked bodies and potentially tls
+ - Go over old bugs
+ - Go over old priorities
+
+
+
+============== OLD STUFF =========
+
 BUGS:
  - weighttp does not resolve trough our embedded dns
  - We have a performance loss recently - probablly due to L3 cache misses.
