@@ -17,8 +17,8 @@
 #include <boost/utility/string_ref.hpp>
 
 #include "HttpRequest.h"
-#include "war_error_handling.h"
-#include "log/WarLog.h"
+#include <warlib/error_handling.h>
+#include <warlib/WarLog.h>
 
 namespace vUbercool {
 namespace http {

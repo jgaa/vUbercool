@@ -7,8 +7,8 @@
 #include <boost/concept_check.hpp>
 #include <boost/property_tree/ptree_fwd.hpp>
 
-#include <war_asio.h>
-#include <tasks/WarThreadpool.h>
+#include <warlib/asio.h>
+#include <warlib/WarThreadpool.h>
 
 /*! vUbercool - High performance web application server
  *
@@ -27,7 +27,7 @@ namespace http {
 enum class ApplicationVersion
 {
     MAJOR = 0,
-    MINOR = 10
+    MINOR = 20
 };
 
 class DnsDaemon

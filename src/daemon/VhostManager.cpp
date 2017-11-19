@@ -13,8 +13,8 @@
 #include <boost/interprocess/mapped_region.hpp>
 #include <boost/filesystem.hpp>
 
-#include "log/WarLog.h"
-#include "war_error_handling.h"
+#include <warlib/WarLog.h>
+#include <warlib/error_handling.h>
 #include <unordered_map>
 
 // Switch for mmap or in-memory only data storage.

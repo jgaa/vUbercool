@@ -4,8 +4,8 @@
 
 #include "Hosts.h"
 #include "../httpd/HttpRequest.h"
-#include "log/WarLog.h"
-#include "war_error_handling.h"
+#include <warlib/WarLog.h>
+#include <warlib/error_handling.h>
 
 using namespace war;
 using namespace std;

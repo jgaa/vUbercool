@@ -1,7 +1,7 @@
 # vUbercool
 Very high performance web application daemon
 
-Copyright 2014 by Jarle (jgaa) Aase. All rights reserved.
+Copyright 2014 - 2017 by Jarle (jgaa) Aase. All rights reserved.
 This project is licensed under the GNU version 3 license. Please
 see the LICENSE file.
 
@@ -70,3 +70,43 @@ web application server in C++ in the future (my old work-horse WarCMS
 is long overdue for replacement).
 
 Anyway, the code for the original project is here. Have fun.
+
+# How to test
+
+Build the project
+
+```sh
+~$ mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
+If you really want to give it a go, you have to change the dns server to the local ip, as the built-in DNS server will resolve the hostnames. The example configuration files use onebillionsites.com, but you can use anything you want.
+
+You can do that by changing <code>/etc/resolv.conf</code>
+
+```sh
+~$ cat /etc/resolv.conf
+nameserver 127.0.0.1
+
+```
+
+Then, give the server permissions to open ports below 1024 (needed for dns).
+
+```
+~$ sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/vubercoold
+```
+
+Modify the configuration-files in <code>conf</code> to suit your needs.
+
+Start the server for the first time
+
+```
+~/src/vUbercool$ vubercoold --http-config conf/http.conf --dns-config conf/dns.conf -C DEBUG --recreate-mmap-file true
+```
+
+Note that the directory for the memory map file (specified in http.conf) must exist and be writable or the user running the demon.
+
+Have fun.

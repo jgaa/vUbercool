@@ -7,9 +7,9 @@
 #include <boost/utility/string_ref.hpp>
 #include <boost/algorithm/string.hpp>
 
-#include <war_asio.h>
-#include "war_error_handling.h"
-#include <log/WarLog.h>
+#include <warlib/asio.h>
+#include <warlib/error_handling.h>
+#include <warlib/WarLog.h>
 
 
 namespace vUbercool {

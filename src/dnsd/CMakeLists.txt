@@ -1,18 +1,22 @@
 
 project(dnsd)
-set(ACTUAL_SOURCES
+set(SOURCES
     DnsDaemon.cpp
     )
-set(HEADERS
-    war_tasks.h
-    ${WARLIB_ROOT_DIR}/include/tasks/WarPipeline.h
-    ${WARLIB_ROOT_DIR}/include/tasks/WarThreadpool.h
-    ${WARLIB_ROOT_DIR}/include/war_asio.h
-    )
-
-set(SOURCES ${ACTUAL_SOURCES})
 
 add_library(dnsd ${SOURCES})
-set_target_properties(dnsd PROPERTIES DEBUG_OUTPUT_NAME vUbercool_dnsdD)
-target_link_libraries(dnsd ${BOOST_LIBRARIES} war_log)
+add_dependencies(dnsd externalWarlib)
+target_include_directories(dnsd
+    PRIVATE $<BUILD_INTERFACE:${VUBERCOOL_ROOT}/include> $<INSTALL_INTERFACE:include>
+    PRIVATE ${CMAKE_BINARY_DIR}/generated-include/
+    PRIVATE ${VUBERCOOL_ROOT}/src/dnsd
+    )
 
+set_property(TARGET dnsd PROPERTY CXX_STANDARD 14)
+target_compile_definitions(dnsd PUBLIC -DBOOST_COROUTINES_NO_DEPRECATION_WARNING=1)
+target_compile_definitions(dnsd PUBLIC -DBOOST_COROUTINE_NO_DEPRECATION_WARNING=1)
+target_link_libraries(dnsd
+    ${Boost_LIBRARIES}
+    warcore
+    ${OPENSSL_LIBRARIES}
+    )

@@ -9,9 +9,9 @@
 #include "vUbercool.h"
 #include "Statistics.h"
 
-#include "log/WarLog.h"
-#include "war_error_handling.h"
-#include "war_boost_ptree_helper.h"
+#include <warlib/WarLog.h>
+#include <warlib/error_handling.h>
+#include <warlib/boost_ptree_helper.h>
 
 using namespace std;
 using namespace war;

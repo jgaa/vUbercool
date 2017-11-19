@@ -20,8 +20,8 @@
 #include "Statistics.h"
 #include "Hosts.h"
 #include "HttpRequest.h"
-#include "log/WarLog.h"
-#include "war_error_handling.h"
+#include <warlib/WarLog.h>
+#include <warlib/error_handling.h>
 
 // Switch to ease the measurement of the performance impact by using
 // boost::iostreams
@@ -786,10 +786,10 @@ public:
                         std::shared_ptr<tcp::socket> socket_ptr { make_shared<tcp::socket>(move(socket)) };
 
                         // Break out of the coroutine (if necesary)
-                        sck_pipeline.Dispatch(bind(&HttpDaemonImpl::OnNewConnection, this,
+                        sck_pipeline.Dispatch({bind(&HttpDaemonImpl::OnNewConnection, this,
                                                    ref(sck_pipeline),
                                                    socket_ptr),
-                                                   "OnNewConnection");
+                                                   "OnNewConnection"});
 
                     } else {
                         ++thd_http_stats_.failed_connections;

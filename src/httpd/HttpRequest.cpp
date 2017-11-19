@@ -1,6 +1,6 @@
 
-#include <war_error_handling.h>
-#include <log/WarLog.h>
+#include <warlib/error_handling.h>
+#include <warlib/WarLog.h>
 
 #include "HttpRequest.h"
 

@@ -1,0 +1,5 @@
+#pragma once
+// Build Configuration settings for WFDE
+//
+
+#cmakedefine VUBERCOOL_WITH_TLS 1

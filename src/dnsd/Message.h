@@ -5,7 +5,7 @@
 #include <boost/concept_check.hpp>
 #include <boost/regex.hpp>
 #include <boost/utility/string_ref.hpp>
-#include "war_error_handling.h"
+#include <warlib/error_handling.h>
 
 #include "Zone.h"
 
