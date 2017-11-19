@@ -107,6 +107,6 @@ Start the server for the first time
 ~/src/vUbercool$ vubercoold --http-config conf/http.conf --dns-config conf/dns.conf -C DEBUG --recreate-mmap-file true
 ```
 
-Note that the directory for the memory map file (specified in http.conf) must exist and be writable or the user running the demon.
+Note that the directory for the memory map file (specified in http.conf) must exist and be writable for the user running the demon.
 
 Have fun.
